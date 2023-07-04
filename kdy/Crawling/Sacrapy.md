@@ -39,6 +39,21 @@ https://docs.scrapy.org/en/latest/intro/tutorial.html
     - http://www.newsprime.co.kr/news/article/?no=605756 의 class가 title, subtitle인 부분을 가져와 보도록 한다.
 
 
-6. 
+### 0704
+1. 데이터 추출
+    - url을 이용해서 제목, 소제목, 기자이름, 게시일, 본문 내용까지 추출하는데 성공했다.
+    - mysql을 이용해서 저장하는 것을 해보도록 하자.
+
+2. data 저장
+    - mysql로 저장할 것은 정해졌으나, rds를 사용할 수 도 있고,, 일단 로컬에 저장할 것인지, 어떤 계정의 rds를 사용할 것인지 정해진 바가 없기 때문에
+    - 차후 키워드 추출 작업을 위해 일단 csv 형태로 저장하기로 했다.
+
+3. crawl_newsprime 프로젝트
+    - crawl_newsprime 이라는 프로젝트를 생성했다.
+    scrapy crawl num -a article_num=605756 와 같이 article num을 입력받아서 재활용 할 수 있는 구조로 만들었다.
+
+    = starter.py라는 파일을 만들어서, article num을 외부에서 입력 받아서 실행시킬 수 있는 구조로 만들었다.
+
+
     
 

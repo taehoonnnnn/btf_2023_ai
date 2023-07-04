@@ -26,6 +26,21 @@
     - 프라임 경제 홈페이지의 카테고리, url > Categories.md 참고
     - 자료구조 > 0704 안내받을 예정.
 
+### 0704
+0. 목표
+    - 프로젝트 본격 시작, 목표 확인 및 data 수집
+
+1. github 
+    - https://github.com/taehoonnnnn/btf_2023_ai
+    - 개인별 branch 작성하여 작업
+    - kdy 폴더 생성 후 지금까지 작업한 내용 push
+
+2. newsprime 
+    - scrapy 폴더내에, crawl_newsprime 프로젝트 생성
+    - readme에 따라 제목, 분야, 내용, 기자, 게시시간 을 db화 시키기로 했다.
+    - 차후, 이 내용을 바탕으로 키워드를 생성하기로 했다.
+    - db는 프로젝트에서 많이 사용되는 oracle과 mysql중에 프로젝트 단위에 더 적합한 mysql로 사용하기로 결정했다.
+
 
 
 
