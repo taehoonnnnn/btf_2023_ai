@@ -37,5 +37,8 @@ https://docs.scrapy.org/en/latest/intro/tutorial.html
 5. 데이터 추출 연습
     - test_spider.py를 이용하여 연습해보도록 한다.
     - http://www.newsprime.co.kr/news/article/?no=605756 의 class가 title, subtitle인 부분을 가져와 보도록 한다.
-    - 
+
+
+6. 
+    
 
