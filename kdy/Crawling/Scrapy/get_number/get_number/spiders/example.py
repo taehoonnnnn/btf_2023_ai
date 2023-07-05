@@ -2,7 +2,7 @@ import scrapy
 
 class MySpider(scrapy.Spider):
     name = "get_number"
-    start_urls = ["http://www.newsprime.co.kr/news/section_list_all/?sec_no=66&page=2"]  # 크롤링을 시작할 웹 사이트 주소를 여기에 입력하세요
+    start_urls = ["http://www.newsprime.co.kr/news/section_list_all/?sec_no=66&page=3"]  # 크롤링을 시작할 웹 사이트 주소를 여기에 입력하세요
 
     def parse(self, response):
         print("출력: ", response.body.decode('utf-8'))
