@@ -61,6 +61,24 @@
     - 예를들어, http://www.newsprime.co.kr/news/section_list_all/?sec_no=66&page=2의 class="news1"인 부분의 a 태그의 주소를 읽어와야 한다.
     - 해당 웹사이트에 1분당 접근 횟수가 제한되어 있다. 
 
+3. 시장조사
+    - 비슷한 서비스가 있는지, 어떤 기능과 효과를 얻고 있는지 확인이 필요하다
+    - 국내사례
+        - clova summary https://medium.com/naver-cloud-platform/%EC%9D%B4%EB%A0%87%EA%B2%8C-%EC%82%AC%EC%9A%A9%ED%95%98%EC%84%B8%EC%9A%94-clova-summary%EB%A1%9C-%EB%89%B4%EC%8A%A4-%EC%9A%94%EC%95%BD-%EC%84%9C%EB%B9%84%EC%8A%A4-%EB%A7%8C%EB%93%A4%EA%B8%B0-%EC%9D%B4%EA%B1%B4-%EB%A7%88%EC%B9%98-%EC%84%B8%EC%A4%84-%EC%9A%94%EC%95%BD-%EB%B4%87-dac29e97d1e4
+
+        - 네이버 속보 요약 프로젝트 https://ai-creator.tistory.com/36
+        - 연합뉴스 인공지능 요약 서비스 https://www.yna.co.kr/view/AKR20210111095300527
+        - 네이버 보이스 뉴스 https://www.yna.co.kr/view/AKR20200731065600017
+        - 네이버 요약봇 https://help.naver.com/service/5603/contents/18902?osType=PC&lang=ko
+        - 다음 자동요약 https://0and24.tistory.com/entry/%EB%89%B4%EC%8A%A4-%EC%9A%94%EC%95%BD%ED%95%B4%EC%84%9C-%EB%B3%B4%EB%8A%94-%EB%B2%95
+        - ai 기반 뉴스 요약 https://blog.est.ai/2021/06/news-summary/
+        - summary tool https://summary-tool.com/kr
+        - 인스타 창업자의 뉴스앱 아티팩트 https://www.digitaltoday.co.kr/news/articleView.html?idxno=474952
+    - 해외사례
+        - summary news https://www.summary.news/posts/subjects/all
+        - oneai https://www.oneai.com/summarize
+
+
 
 
 
