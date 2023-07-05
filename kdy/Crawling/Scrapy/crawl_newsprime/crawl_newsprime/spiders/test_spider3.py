@@ -2,7 +2,7 @@ import scrapy
 from datetime import datetime
 
 class MySpider(scrapy.Spider):
-    name = 'num'
+    name = 'article2'
     # 외부에서 받는 인자를 기본으로 설정해둔 값으로 설정합니다.
     # Scrapy의 argument 기능을 사용해서 인자를 받아오는 코드를 추가합니다.
     def __init__(self, article_num, *args, **kwargs):
