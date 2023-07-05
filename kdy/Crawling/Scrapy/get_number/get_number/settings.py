@@ -1,4 +1,4 @@
-# Scrapy settings for get_aitlcle_number project
+# Scrapy settings for get_number project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -7,14 +7,14 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = "get_aitlcle_number"
+BOT_NAME = "get_number"
 
-SPIDER_MODULES = ["get_aitlcle_number.spiders"]
-NEWSPIDER_MODULE = "get_aitlcle_number.spiders"
+SPIDER_MODULES = ["get_number.spiders"]
+NEWSPIDER_MODULE = "get_number.spiders"
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = "get_aitlcle_number (+http://www.yourdomain.com)"
+#USER_AGENT = "get_number (+http://www.yourdomain.com)"
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
@@ -45,13 +45,13 @@ ROBOTSTXT_OBEY = True
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    "get_aitlcle_number.middlewares.GetAitlcleNumberSpiderMiddleware": 543,
+#    "get_number.middlewares.GetNumberSpiderMiddleware": 543,
 #}
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #DOWNLOADER_MIDDLEWARES = {
-#    "get_aitlcle_number.middlewares.GetAitlcleNumberDownloaderMiddleware": 543,
+#    "get_number.middlewares.GetNumberDownloaderMiddleware": 543,
 #}
 
 # Enable or disable extensions
@@ -63,7 +63,7 @@ ROBOTSTXT_OBEY = True
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 #ITEM_PIPELINES = {
-#    "get_aitlcle_number.pipelines.GetAitlcleNumberPipeline": 300,
+#    "get_number.pipelines.GetNumberPipeline": 300,
 #}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
