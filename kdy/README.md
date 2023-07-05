@@ -53,12 +53,13 @@
 1. 크롤링
     - 1차적으로 csv를 먼저 만들어서 차후 db화 시키기로 결정했다.
     - scrapy crawl num -a article_num=605932 와 같은 형식으로 실행하여 기사 번호를 받을 수 있도록 수정했다.
-    - starter.py를 만들어서, 위의 명령어를 함수로 만들어서 실행시킬 수 있도록 만들었다.
+    - make_csv.py를 만들어서, 위의 명령어를 함수로 만들어서 실행시킬 수 있도록 만들었다.
     - 다음은 크롤링할 article num의 리스트가 필요하다.
 
 2. article num 크롤링
-    - get_article_number 프로젝트를 생성했다.
+    - get_number 프로젝트를 생성했다.
     - 예를들어, http://www.newsprime.co.kr/news/section_list_all/?sec_no=66&page=2의 class="news1"인 부분의 a 태그의 주소를 읽어와야 한다.
+    - 해당 웹사이트에 1분당 접근 횟수가 제한되어 있다. 
 
 
 

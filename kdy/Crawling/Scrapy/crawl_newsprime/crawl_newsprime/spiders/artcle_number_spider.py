@@ -20,12 +20,12 @@ class MySpider(scrapy.Spider):
         with open(self.csv_file, mode, newline='', encoding='utf-8-sig') as file:
             self.csv_writer = csv.writer(file)
             if not self.csv_exists:
-                self.csv_writer.writerow(['Title', 'Subtitle', 'Journalist', 'Date/Time', 'Content'])
+                self.csv_writer.writerow(['Article number', 'Title', 'Journalist', 'Date/Time', 'Content'])
         yield scrapy.Request(url=self.start_urls[0], callback=self.parse)
 
     def parse(self, response):
         titles = response.css('.title::text').get()
-        subtitles = response.css('.subtitle::text').get()
+        # subtitles = response.css('.subtitle::text').get()
         arvdate = response.css('.arvdate').get()
         arvdate_selector = scrapy.Selector(text=arvdate)
         journalist = arvdate_selector.css('span::text').get()
@@ -38,7 +38,7 @@ class MySpider(scrapy.Spider):
 
         with open(self.csv_file, 'a', newline='', encoding='utf-8-sig') as file:
             self.csv_writer = csv.writer(file)
-            self.csv_writer.writerow([article_num_str, titles, subtitles, journalist, formatted_date_time, cleaned_context])
+            self.csv_writer.writerow([article_num_str, titles, journalist, formatted_date_time, cleaned_context])
 
         # print("제목: ", titles)
         # print("부제목: ", subtitles)
