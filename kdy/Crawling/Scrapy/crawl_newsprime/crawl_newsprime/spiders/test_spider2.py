@@ -2,7 +2,7 @@ import scrapy
 from datetime import datetime
 
 class MySpider(scrapy.Spider):
-    name = 'num'
+    name = 'test2'
     article_num = 605756
     start_urls = ['http://www.newsprime.co.kr/news/article/?no=' + str(article_num)]
 
