@@ -6,7 +6,7 @@
 import scrapy
 
 
-class GetAitlcleNumberItem(scrapy.Item):
+class GetNumberItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
     pass

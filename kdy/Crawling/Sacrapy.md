@@ -52,7 +52,11 @@ https://docs.scrapy.org/en/latest/intro/tutorial.html
     - crawl_newsprime 이라는 프로젝트를 생성했다.
     scrapy crawl num -a article_num=605756 와 같이 article num을 입력받아서 재활용 할 수 있는 구조로 만들었다.
 
-    = starter.py라는 파일을 만들어서, article num을 외부에서 입력 받아서 실행시킬 수 있는 구조로 만들었다.
+    - starter.py라는 파일을 만들어서, article num을 외부에서 입력 받아서 실행시킬 수 있는 구조로 만들었다.
+
+    - starter.py를 수정하여 csv형태로 바로 정보를 저장할 수 있도록 수정하였다.
+
+4. url을 수집하기 위해 시도 중이지만, 오류가 발생중이다.
 
 
     
