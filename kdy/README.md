@@ -78,7 +78,24 @@
         - summary news https://www.summary.news/posts/subjects/all
         - oneai https://www.oneai.com/summarize
 
+### 0706 
+1. 프로젝트 방향성
+    - 3c4p 분석 도구를 이용하여, 프로젝트의 방향성을 구체화 하기로 했다.
+    - 이를 위해 구글 문서를 생성했다.(https://docs.google.com/document/d/1FM-Hxgfnz6L51S7quIKrquttcuz5Fmipn0b2JZWA98g/edit?usp=sharing)
+    - 시장조사를 비롯한 내용들을 이 문서에 정리할 계획이다.
 
+2. article number
+    - 기사 번호를 추출하는데 있어, 기사 목록창에서 계속 접근 제한이 반환된다.
+    - 응답코드는 200, scrapy라이브러리에 접근 횟수에 제한 기능이 기본설정되어 있지 않기 때문에 웹사이트에서 막은 것으로 예측된다.
+    - 반환은 "1분이내 접근 횟수를 초과 하였습니다. 브라우저를 완전 종료후 다시 실해해 주세요."라고 나오는데, 다음 날 시도 했을 때도 같은 오류를 내는 것을 보아 딜레이 이외의 다른 접근방식이 필요하다고 생각된다.
+    - 현욱님이 selenium으로 기사번호 추출을 시도하기로 했다.
+
+3. crawl
+    - 현욱님이 만든 url.csv를 바탕으로 starter.py를 통해 크롤링 할 수 있도록 수정했다.
+    - url.csv에서 url을 읽고, article number를 추출하여 크롤링할 수 있다.
+    - 다만 1개 기사에 1초 정도 걸리는 것은 시간이 과다하게 소모되므로 시간 절약을 위한 수단을 강구할 필요가 있다.
+    - Scrapy 설정에서 CONCURRENT_REQUESTS 매개 변수를 늘려 동시에 처리할 수 있는 요청의 수를 늘리는 방법 또는 여러 스파이더를 동시에 실행하여 병렬 처리하는 방법을 시도해 보도록 하자.
+    
 
 
 
