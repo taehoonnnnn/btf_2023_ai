@@ -2,9 +2,8 @@ import subprocess
 import csv
 import re
 import time
-from concurrent.futures import ThreadPoolExecutor
+start = time.time()  # 시작시간을 저장한다.
 
-start = time.time()
 
 # article_num을 입력받아 스파이더를 실행시키는 함수
 def run_spider(article_num):
@@ -28,6 +27,7 @@ with open('url.csv','r') as f:
         else:
             print("No match found")
 
+# 점차 데이터의 양이 증가할 예정이기 때문에 성능상의 이유로 set으로 변경한다.
 # output.csv에서 article number를 가져와, 그 값이 article_number_set에 있으면 set에서 제거한다.
 with open('output.csv', 'r', encoding='utf-8') as f:
     rdr = csv.reader(f)
@@ -36,8 +36,9 @@ with open('output.csv', 'r', encoding='utf-8') as f:
         if article_number in article_number_set:
             article_number_set.remove(article_number)
 
-# ThreadPoolExecutor를 이용하여 여러 개의 스파이더를 동시에 실행한다.
-with ThreadPoolExecutor(max_workers=10) as executor:
-    executor.map(run_spider, list(article_number_set))
+# 수정된 article_number_set 기준으로 크롤링하여, 정보를 output.csv에 저장한다.
+for i in article_number_set:
+    run_spider(i)
+
 
 print(time.time() - start) # 현재시각-시작시간 = 실행시간
