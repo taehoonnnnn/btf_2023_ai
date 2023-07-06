@@ -99,6 +99,10 @@
     - CONCURRENT_REQUESTS 매개 변수를 늘리는 방법은 효과가 없었다.
     - 스파이더를 병렬 실행했을 때는, 크롤링이 제대로 되지 않은건지 저장이 되지 않았다.
     - ThreadPoolExecutor를 이용하여 여러 개의 스파이더를 동시에 실행시키는 방법으로 117초에서 34초로 줄였다.
+
+4. crawl article number
+    - beautiful soup와 scrapy에서는 1분이내 접근 횟수 오류가 계속 발생했지만, selenium은 가능했다. selenium으로 접근하기로 했다.
+    
     
 
 
