@@ -1,3 +1,4 @@
+import os
 import subprocess
 import csv
 import re
@@ -12,9 +13,8 @@ def run_spider(article_num):
     process = subprocess.Popen(command, shell=True)
     process.wait()
 
-
 # url.csv의 url을 읽는다
-with open('url.csv','r') as f:
+with open('자본시장_금융파트.csv','r') as f:
     rdr = csv.reader(f)
 
     # 정규표현식을 사용하여 url로부터 article number를 추출하여 article_number_list에 저장한다.
@@ -28,8 +28,15 @@ with open('url.csv','r') as f:
         else:
             print("No match found")
 
+output_file = 'output.csv'
+
+# output.csv가 없으면 빈 파일로 생성한다.
+if not os.path.exists(output_file):
+    with open(output_file, 'w') as f:
+        pass
+
 # output.csv에서 article number를 가져와, 그 값이 article_number_set에 있으면 set에서 제거한다.
-with open('output.csv', 'r', encoding='utf-8') as f:
+with open(output_file, 'r', encoding='utf-8') as f:
     rdr = csv.reader(f)
     for line in rdr:
         article_number = line[0] # output.csv 파일에 따라서 수정이 필요할 수 있음.
