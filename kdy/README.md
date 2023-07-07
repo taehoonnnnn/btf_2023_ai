@@ -102,6 +102,16 @@
 
 4. crawl article number
     - beautiful soup와 scrapy에서는 1분이내 접근 횟수 오류가 계속 발생했지만, selenium은 가능했다. selenium으로 접근하기로 했다.
+    - 현재 작업하는 pc에 차단이 걸린 듯하다.
+    - 기사 리스트에서 url을 가져오는 것은 이 pc에서 beautifulsoup, scrapy, selenium의 사용여부와 관계없이 1분이내 접근 횟수 오류가 발생했고, url을 가지고 기사 내용을 크롤링 하는것은 가능했다.
+    - url은 현욱님이 진행해주시기로 했고, 받아온 url을 가지고 크롤링 하기로 했다.
+
+### 0707
+1. 프로젝트 구체화
+    - 데이터 수집에 기능은 대부분 구현되었다. url을 가져오는 기능은 모두 구현 되었고, 크롤링을 진행하기만 하면 된다.
+    - 프로젝트 구체화를 통해, 차후 일정관리, 중간마감 설정, 담당업무 분배, 프로젝트 결과물을 통한 기대효과 등을 정리하기로 했다.
+    - 기존에 사용하는 3c4p에서 3c에 가능한 많은 정보를 수집하고, 회의가 필요하다. (https://docs.google.com/document/d/1FM-Hxgfnz6L51S7quIKrquttcuz5Fmipn0b2JZWA98g/edit?usp=sharing)
+    
     
     
 
