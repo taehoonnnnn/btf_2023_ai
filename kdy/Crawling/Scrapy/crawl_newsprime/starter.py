@@ -32,7 +32,7 @@ output_file = 'output.csv'
 
 # output.csv가 없으면 빈 파일로 생성한다.
 if not os.path.exists(output_file):
-    with open(output_file, 'w') as f:
+    with open(output_file, 'w', encoding='utf-8') as f:
         pass
 
 # output.csv에서 article number를 가져와, 그 값이 article_number_set에 있으면 set에서 제거한다.

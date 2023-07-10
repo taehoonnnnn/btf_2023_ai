@@ -17,6 +17,7 @@
     - requests 설치(version 22.31.0)
     - scrapy 설치(version 2.9.0)
     - selenium 설치(version 4.10.0)
+    - pandas 설치(2.0.3)
     - requirements.txt 생성
 
 3. git
@@ -134,6 +135,35 @@
     - 자본시장- 금융 크롤링 진행중, 2000개에, 15분 정도 소요됨.
     - output.csv가 없으면 자동으로 생성하도록 starter.py수정
     
+### 0710
+1. crawling
+    - 현욱님과 누리님이 파트를 나눠서 url 크롤링중이며,
+    - 이를 csv형태로 받아서 기사 내용을 크롤링중이다.
+    - 마찬가지로 csv형태로 저장한다.
+    - 크롤링을 진행하면서, 다른 작업에 착수하도록 한다.
+    - 크롤링 결과물에 줄바꿈 문제가 있어 수정, '\r\n'과 '\n'을 제거했다.
+
+
+2. summary
+    - 핵심 기능인 summary는 naver clova summary에서 api 형태로 무료 제공하고 있다.(https://www.ncloud.com/product/aiService/clovaSummary)
+    - 이 api를 사용하지 않기 때문에, 차별화되는 장점이나 특징이 있어야 한다.
+    - clova summary의 특징은 
+        1. 글자수가 2000자로 제한되어 있다는 점.
+        2. 하루 1000회까지만 무료라는 점.
+        이다.
+    - 김태훈 팀장님의 가이드에 따르면
+        1. 기사 몇개를 선정해서 GPT 3.5 or 4.0한테 요약해달라고 일정한 규칙을 붙여 요청 > 동일한 형태로 아웃풋데이터
+        2. 를 위한 프롬포터 만들기
+        3. '일정한' 데이터를 얻어야한다는 점을 유의.
+
+    - chat gpt api를 사용하여 summary 해야하기 때문에 document을 찾아봤다.
+    - https://platform.openai.com/docs/guides/gpt/chat-completions-api
+    - https://platform.openai.com/docs/api-reference/chat/create
+    - 관련 내용은 summafy 폴더의 readme에 작성한다.
+
+
+3. keyword
+    - summary와 마찬가지로 방법론에 대해 찾아보고, 
 
 
 

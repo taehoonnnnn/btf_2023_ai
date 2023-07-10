@@ -35,6 +35,11 @@ class MySpider(scrapy.Spider):
         formatted_date_time = date_time.strftime("%Y.%m.%d %H:%M:%S")
         context_nodes = response.css('#news_body_area ::text').getall()
         cleaned_context = ''.join([text.strip() for text in context_nodes if text.strip()])
+        cleaned_context = cleaned_context.replace("\r\n", "")
+        cleaned_context = cleaned_context.replace("\n", "")
+        print(context_nodes)
+        print(cleaned_context)
+
 
         with open(self.csv_file, 'a', newline='', encoding='utf-8-sig') as file:
             self.csv_writer = csv.writer(file)
