@@ -183,6 +183,15 @@
 
     - 우선, ssa와 lambada을 이용해 볼 수 있겠다.
 
+    - ai hub에 있는 요약 데이터셋을 이용하여 성능 측정을 해볼 수 있겠다.
+    (https://aihub.or.kr/aihubdata/data/view.do?currMenu=115&topMenu=100&aihubDataSe=realm&dataSetSn=582)
+
+3. .env
+    - 회사계정을 지원받아 api를 테스트해보기로 했다.
+    - .env 파일 만들어서 소스파일에 덧대는 방식으로 구성하여 깃헙에 올라가지 않도록 설정한다.
+    - python-dotenv 1.0.0을 이용한다.
+    - .gitignore에도 .env를 추가한다.
+
 
 
 
