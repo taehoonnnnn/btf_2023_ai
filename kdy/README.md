@@ -112,7 +112,7 @@
     - 데이터 수집에 기능은 대부분 구현되었다. url을 가져오는 기능은 모두 구현 되었고, 크롤링을 진행하기만 하면 된다.
     - 프로젝트 구체화를 통해, 차후 일정관리, 중간마감 설정, 담당업무 분배, 프로젝트 결과물을 통한 기대효과 등을 정리하기로 했다.
     - 기존에 사용하는 3c4p에서 3c에 가능한 많은 정보를 수집하고, 회의가 필요하다. (https://docs.google.com/document/d/1FM-Hxgfnz6L51S7quIKrquttcuz5Fmipn0b2JZWA98g/edit?usp=sharing)
-
+2
 2. 아이디어 회의
     - 프로젝트의 결과물을 어떤 것을 목표로 하고, 어떤 방식으로 구현할 수 있을지, 시장조사와 기대효과를 고려하여 아이디어 회의를 진행했다.
     - 기본 조건은 다음과 같다.
@@ -184,13 +184,73 @@
     - 우선, ssa와 lambada을 이용해 볼 수 있겠다.
 
     - ai hub에 있는 요약 데이터셋을 이용하여 성능 측정을 해볼 수 있겠다.
-    (https://aihub.or.kr/aihubdata/data/view.do?currMenu=115&topMenu=100&aihubDataSe=realm&dataSetSn=582)
+        1. 요약문 및 레포트 생성 데이터(https://aihub.or.kr/aihubdata/data/view.do?currMenu=115&topMenu=100&aihubDataSe=realm&dataSetSn=582)
+        2. 문서요약 텍스트(https://www.aihub.or.kr/aihubdata/data/view.do?currMenu=&topMenu=&aihubDataSe=realm&dataSetSn=97)
 
 3. .env
     - 회사계정을 지원받아 api를 테스트해보기로 했다.
     - .env 파일 만들어서 소스파일에 덧대는 방식으로 구성하여 깃헙에 올라가지 않도록 설정한다.
     - python-dotenv 1.0.0을 이용한다.
     - .gitignore에도 .env를 추가한다.
+
+4. openai
+    - openai 0.27.8 을 설치하고 진행한다.
+    
+### 0712
+1. summary
+    - 요약에 사용할 모델과 프롬포트에 따라 성능이 어떻게 달라지는지 측정할 것이다.
+    - 성능평가에 사용하기 편하도록 aihub에서 받은 자료에서 기사 부분만 추출하고, json 형식을 csv형식으로 바꾼다.
+
+    - 요약문 및 레포트 생성 데이터
+        - 1. Training > 라벨링데이터 > TS1 > 01.news_r > 2~3sent의 각 파일에서 doc_name = 기사제목, passage = 본문, summary1 = 요약 1줄, summary2 = 요약 3줄, author= 기자, 게시시간 없음, publisher_year = 게시년도, 분야 없음
+        - 2. Training > 라벨링데이터 > TS1 > 01.news_r > 20per의 각 파일에서
+        doc_name = 기사제목, passage = 본문, summary1 = 요약 1줄, summary3 = 요약 3줄
+
+        >> 차이점을 느끼기 어려움
+    - 문서요약 텍스트
+        - documents > media_sub_type = 경제지 여부, title = 제목, text > sentence = 본문, category = 분야, 기자 없음, publish_date = 게시시간
+        +(text > index = 문장 순서)
+
+    - pandas 2.0.3, numpy 1.25.1, pytz 2023.3, tzdata-2023.3를 추가 설치하고 진행한다.
+
+
+2. openai api
+    - summary > model 폴더를 만들어서 모델과 프롬포트를 수정하면서 테스트를 해볼 수 있도록 openai_api.py를 생성하였다.
+    - 동시에 기존의 요약본과 간단히 비교하여 성능을 측정하기 위해 data1_val_23cent.csv에서 본문과 요약문을 가져오고, api를 통한 요약문을 합쳐서 csv형태로 저장하도록 test3.py를 작성하였다.
+
+3. bleu score
+    - 요약이 얼마나 잘 됐는지 정량적으로 평가하기 위해 자연어 처리에서 가장 많이 이용되는 bleu score를 시도해보자. bleu이외에 많은 평가방법이 있기 때문에 차후 다양한 평가로 전환한다.
+
+    - 이를 위해 nltk-3.8.1 를 설치했다.
+
+    - output.csv에서 각 행을 추출하고, 행마다의 bleu score를 구한 뒤, 평균 bleu를 구할 수 있도록 하는 cal_bleuscore.py를 작성했다.
+
+### 0713
+1. bleu score
+    - bleu score는생성된 문장과 참조할 문장(Human generated) 사이의 얼마나 많은 n-grams가 겹치는지에 대한 precision의 기하평균으로 정의된다.
+    - precision으로 정의되기 때문에 짧은 문장일수록 점수를 높게 받는 경향이 있으며, 이를 보정하기 위해 문장 길이에 advantage를 주는 (짧을 수록 penalty를 주는) Brevity Penalty를 적용한다.  
+    - 단어의 순서를 고려하지 않는 문제점 보완되어 있고, 짧은 문장일수록 score가 높아지는 문제점도 보완 되어 있다. 
+    - 다만, 같은 의미의 다른 단어여도 다른 단어를 쓰면 틀렸다고 판단하는 경향이 있다.
+
+    다른 평가지표로 sacreBLEU, CHRF score, TER score, BLEURT등을 사용해 볼 수 있다.
+
+2. scareBLEU
+    - bleu의 BLEU Metric은 Tokenization을 어떻게 하느냐에 따라서 크게 달라지므로 현재 Machine Translation 에서는 NLTK 의 BLEU를 사용하지 않는다는 단점을 개선시켜 현재 bleu의 표준이라고 말해도 될 정도로 많이 사용되고 있다.
+    - 아직 미구현
+
+3. BLEULT
+    - 사전 학습한 BERT를 Human Evaluation으로 Fine-tuning 하여 Human Evaluation을 훌륭하게 모델링한 Metric으로 sacreBLEU와 같이 많이 사용되고 있다.
+    - 아직 미구현
+
+4. calculate score
+    - data1_val_23cent.csv에 open ai를 통해 받은 정보들이 csv형태로 정리되어 있으며,
+    - create_output.py 를 통해 csv를 읽어서 비교할 '원문'과 '요약문'을 추출해 output.csv로 저장한다.
+    - cal_bleuscore.py는 output.csv의 첫 열과 두 번째 열의 값을 가지고 bleucore를 계산한다.
+    
+5. output.csv 파일에 조건에 따라 열별로 본문/요약문1/요약문2/요약문3... 의 구조로 만들어서 비교한다?
+
+
+
 
 
 
