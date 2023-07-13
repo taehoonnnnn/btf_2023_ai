@@ -28,14 +28,14 @@ def create_response(line):
     )
     return response.choices[0].message['content']
 
-# load_dotenv()
-# api_key = os.getenv("OPENAI_API_KEY")
-# openai.api_key = api_key
+load_dotenv()
+api_key = os.getenv("OPENAI_API_KEY")
+openai.api_key = api_key
 
 with open('data1_val_23cent.csv', 'r', encoding='utf-8') as f_in, open('output.csv', 'w', newline='', encoding='utf-8') as f_out:
     rdr = csv.reader(f_in)
     writer = csv.writer(f_out)
     for line in rdr:
-        # response = create_response(line[3])
-        # writer.writerow([line[3], response, line[4]])
+        response = create_response(line[3])
+        writer.writerow([line[3], response, line[4]])
         writer.writerow([line[3], line[4]])

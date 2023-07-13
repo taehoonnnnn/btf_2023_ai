@@ -31,7 +31,7 @@ response = openai.ChatCompletion.create(
     },
     {
       "role": "user",
-      "content": "line"
+      "content": "line1"
     },
   ],
 # 높을 수록 무작위성이 높아진다(0~2)/기본값 1
