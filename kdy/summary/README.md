@@ -49,7 +49,7 @@
    gpt-3.5-turbo-16k, 
    gpt-3.5-turbo-16k-0613
 
-   text-davinci-003, 
+   <!-- text-davinci-003, 
    text-davinci-002, 
    text-davinci-001, 
    text-curie-001, 
@@ -74,7 +74,7 @@
    code-search-*-*-001
 
    text-moderation-stable, 
-   text-moderation-latest
+   text-moderation-latest -->
 
 ### message
  - role

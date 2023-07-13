@@ -2,7 +2,7 @@ import pandas as pd
 from nltk.translate.bleu_score import sentence_bleu
 
 # load the csv file
-df = pd.read_csv('output.csv', header=None)
+df = pd.read_csv('output_gpt-3.5-turbo.csv', header=None)
 
 # ensure that the reference and candidate columns are string type
 assert df[0].dtype == object and df[1].dtype == object
