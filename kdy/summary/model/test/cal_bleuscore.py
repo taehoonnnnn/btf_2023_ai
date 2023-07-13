@@ -21,3 +21,6 @@ print(df['bleu'])
 # calculate and print the average BLEU score
 average_bleu = df['bleu'].mean()
 print("Average BLEU score:", average_bleu)
+
+df2 = df.drop([0, 1], axis=1)
+df2.to_csv('bleuscore.csv',index=False, encoding="utf-8")
