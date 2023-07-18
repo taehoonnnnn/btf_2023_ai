@@ -76,36 +76,6 @@
    text-moderation-stable, 
    text-moderation-latest -->
 
-### message
- - role
- - content
- - name
- - function_call
-
-### functions
- - name
- - discription
- - parameters
-
-### temperature
-
-### top_p
-
-### n
-
-### stream
-
-### stop
-
-### max_tokens
-
-### presence_penalty
-
-### frequncy_penalty
-
-### logit_bias
-
-### user
 
 2. playground에서 테스트 해 볼 수 있다.
 - https://platform.openai.com/playground?mode=chat 

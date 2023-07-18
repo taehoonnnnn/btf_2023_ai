@@ -251,11 +251,55 @@
 
 
 
+### 0714
+1. keyworld
+    - 오늘부터 키워드 추출 작업을 시작하기로 했다.
+    - 분야별로 다른 프롬포트를 사용할 예정이므로, 일단 자본시장 - 금융 부터 작업하도록 한다.
+    - 많이나오는 단어, 기사의 주제, 기사의 핵심인물(또는 기업)을 키워드로 하며,
+    - 카드뉴스는 제외하도록 한다.
+
+    - 비용 측면에서 gpt-4는 gpt-3.5의 20배 정도의 가격이므로, gpt-3.5터보로 진행한다.
+    - 월 100달러 까지 허용되어 있으며,
+    - 사용량에 따른 청구금액을 중간 보고하면서 프로젝트를 진행하기로 했다.
+
+    - 우선적으로 프라임경제 자본시장 - 금융 100개의 기사에 대한 키워드를 추출하고
+    - 키워드와 openai api를 통해 요약한 문장 사이의 유사도에 대한 점수를 측정하여
+    - 정량적, 정성적으로 얼마나 성능이 나오고, 개선이 필요한지 확인하도록 한다.
+
+    - 기존에 크롤링 한 정보에서 키워드를 추가하는 작업이고, 동시에 작업해야 하므로 공유문서를 사용한다.(https://docs.google.com/spreadsheets/d/1oczjEF-vg6kxSNyEnSaOggkmcH0aV7HtASU_HQv1TbY/edit?usp=sharing)
+
+    - 100개의 기사에 대한 키워드를 사람에 의해 5개씩 선정하였다. 이를 기준으로 요약문과의 유사도를 검증할 예정이다. 
+    - 이는 scrapy > crawl_newprime > keyword 폴더에 저장한다.
+
+### 0717
+1. data
+    - 14일 진행했던 파일을 팀장님이 확인하고 데이터형식을 다시 지정해주신다고 한다.
+    - 이를 바탕으로 수정한다.
+        1. kewyword는 각각 column을 차지하도록 수정한다.
+        2. 게시일은 년,월,일로 수정한다.
+        3. mysql을 이용하여 db화 하기 전에 ,를 다른 문자로 변환하여 치환하여야 한다. 이는 차후 진행한다.
+        4. "[프라임경제]"는 불필요한 정보이므로 content에서 생략한다.
 
 
+### 0718
+1. summary & score
+    - 파라미터의 변화에 따른 score를 그래프로 그리는 것 까지를 목표로 하며
+    - 이를 위해서 해야할 작업은 
+        1. article_number, message, response, score, model, temperature, max_tokens, top_p, frequency_penalty, presence_panalty를 column으로 가지는 dataframe만들기
+        2. score의 계산방식은 추출한 키워드를 요약문에서 얼마나 잘 반영하고 있는지 count하여 계산한다.
+        3. score에 관련한 부분은 차후 수정할 수 있으므로 함수 형식으로 제작한다
+        4. 최적화까지 자동으로 할 수 있다면 인력 소모를 줄일 수 있겠으나, 현재 토큰에 대한 비용문제로(월 100달러) 가능한 시도 횟수를 줄여야하기 때문에, 수작업으로 진행한다.
+        5. 그래프는 파라미터 조건이 많으므로, 조건을 표 형식으로 제시한다
+        6. 제목을 포함했을 때, 제목을 포함하지 않았을 때의 그래프를 따로 그린다.
 
 
+2. openai api error
+    - openai.error.InvalidRequestError: This model's maximum context length is 4097 tokens. However, your messages resulted in 4464 tokens. Please reduce the length of the messages.
+    라는 오류가 606050 기사에서 계속 발생하는데
+    토크나이저 계산기에 넣어보면 2000토큰도 되지 않는다.
 
+    - openai.error.ServiceUnavailableError: The server is overloaded or not ready yet.
+    - bad gateway{"error::{"code":502, "message":"bad gatway}}...
 
 
 
