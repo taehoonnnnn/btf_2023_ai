@@ -7,62 +7,80 @@ import time
 start = time.time()  # 시작 시간 저장
 
 load_dotenv()
-api_key = os.getenv("api_key")  # os.environ.get 대신 os.getenv 사용
+api_key = os.getenv("api_key") 
 openai.api_key = api_key
 
-df = pd.read_csv('output.csv')
+df = pd.read_csv('자본시장_금융.csv')
 
 # 모델 및 매개변수 정의
-# 사용 가능 모델
-#  gpt-4, 
-#  gpt-4-0613, 
-#  gpt-4-32k, 
-#  gpt-4-32k-0613, 
-#  gpt-3.5-turbo, 
-#  gpt-3.5-turbo-0613, 
-#  gpt-3.5-turbo-16k, 
-#  gpt-3.5-turbo-16k-0613
-model = "gpt-3.5-turbo"
-# 0~2, 높을 수록 출력이 무작위화 된다.
+model = "gpt-3.5-turbo-16k"
 temperature = 1
-# 생성 최대 토큰 수
 max_tokens = 256
-# 핵샘플링, 0~1, 0.1은 상위 10% 확률 질량을 구성하는 토큰만 고려된다.
 top_p = 1
-# -2~2, 높을 수록 새로운 단어로 이야기 할 가능성을 높인다.
 frequency_penalty = 2
-# -2~2, 높을 수록 새로운 주제에 대해 이야기할 가능성을 높인다.
 presence_penalty = 0
 
-# 컬럼 이름 생성
-column_name = f"{model}_temperature{temperature}_maxtokens{max_tokens}_topp{top_p}_frequencypenalty{frequency_penalty}_presencepenalty{presence_penalty}"
-df[column_name] = ''  # New column with empty strings
+# Initialize new dataframe with desired column names
+df_new = pd.DataFrame(
+    columns=[
+        "article_number", "score", 
+        "keyword1" ,"keyword2" ,"keyword3" ,"keyword4" ,"keyword5",  
+        "message",  "model", "temperature", "max_tokens", "top_p", 
+        "frequency_penalty", "presence_penalty", "response"])
 
 for idx, row in df.iterrows():
-    first_column_value = row.iloc[0]
+    time.sleep(1)
+    article_number = row.iloc[0]
+    content = row.iloc[4]
+    keyword1 = row.iloc[5]
+    keyword2 = row.iloc[6]
+    keyword3 = row.iloc[7]
+    keyword4 = row.iloc[8]
+    keyword5 = row.iloc[9]
     
     response = openai.ChatCompletion.create(
       model=model,
       messages=[
         {
           "role": "user",
-          "content": "다음 뉴스 기사를 3문장으로 요약해줘"
+          "content": "다음 뉴스 기사를 3문장으로 요약해, 총 답변의 길이는 150자 이내로 제한한다."
         },
         {
           "role": "user",
-          "content": first_column_value  
+          "content": content  
         },
       ],
       temperature=temperature,
-      max_tokens=max_tokens,
+      # max_tokens=max_tokens,
       top_p=top_p,
       frequency_penalty=frequency_penalty,
       presence_penalty=presence_penalty
     )
     
     result = response['choices'][0]['message']['content']
-    df.loc[idx, column_name] = result  # Update the new column with result
-
-df.to_csv('output.csv', index=False)
+    result = result.replace(",", "")  # Remove comma from the response
+    result = result.replace("\n", "")
+    # Update the new row with values
+    new_row = pd.DataFrame([{
+      "article_number": article_number,
+      "score": 0,
+      "keyword1" : keyword1,
+      "keyword2" : keyword2,
+      "keyword3" : keyword3,
+      "keyword4" : keyword4,
+      "keyword5" : keyword5,
+      "response": result,
+      "message": "다음 뉴스 기사를  3문장으로 요약해, 총 답변의 길이는 150자 이내로 제한한다. + content",
+      "model": model,
+      "temperature": temperature,
+      # "max_tokens": max_tokens,
+      "top_p": top_p,
+      "frequency_penalty": frequency_penalty,
+      "presence_penalty": presence_penalty,
+    }])
+    
+    df_new = df_new._append(new_row, ignore_index=True)
+# print(result)
+df_new.to_csv('output.csv', index=False)
 
 print("time :", time.time() - start)  # 현재시각 - 시작시간 = 실행 시간
