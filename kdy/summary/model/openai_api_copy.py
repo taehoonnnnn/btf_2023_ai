@@ -15,7 +15,7 @@ df = pd.read_csv('자본시장_금융.csv')
 # 모델 및 매개변수 정의
 model = "gpt-3.5-turbo-16k"
 # default = 1
-temperature = 0
+temperature = 1
 # default = 256
 max_tokens = 256
 # default = 1
@@ -34,8 +34,9 @@ df_new = pd.DataFrame(
         "frequency_penalty", "presence_penalty", "response"])
 
 for idx, row in df.iterrows():
-    time.sleep(5)
+    time.sleep(1)
     article_number = row.iloc[0]
+    title = row.iloc[1]
     content = row.iloc[4]
     keyword1 = row.iloc[5]
     keyword2 = row.iloc[6]
@@ -48,7 +49,19 @@ for idx, row in df.iterrows():
       messages=[
         {
           "role": "user",
-          "content": "다음 뉴스 기사를 3문장으로 요약해, 총 답변의 길이는 150자 이내로 제한한다."
+          "content": "다음 뉴스 기사를 3문장으로 요약해"
+        },
+        {
+          "role": "user",
+          "content": "다음은 뉴스 기사의 제목이야"
+        },
+        {
+          "role": "user",
+          "content": title  
+        },
+        {
+          "role": "user",
+          "content": "다음은 뉴스 기사의 본문이야"
         },
         {
           "role": "user",
