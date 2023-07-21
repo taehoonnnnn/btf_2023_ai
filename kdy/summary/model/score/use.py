@@ -11,7 +11,7 @@ model = hub.load("https://tfhub.dev/google/universal-sentence-encoder/4")
 
 
 # CSV 파일을 읽습니다
-df = pd.read_csv('자본시장_금융_default_new.csv')
+df = pd.read_csv('자본시장_금융.csv')
 
 # 각 행의 'content'와 'response'에 대한 유사성 점수를 계산합니다
 similarity_scores = []
