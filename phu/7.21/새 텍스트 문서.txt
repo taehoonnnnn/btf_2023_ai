@@ -12,6 +12,9 @@ output.csv
       ],
 
 489초
+        keyworld_eng 1.72 (요약문 오류 있었음)
+        SBERT 0.625
+        USE 0.074
 ===================================================================================================
 output_kor.csv 
 
@@ -27,6 +30,9 @@ output_kor.csv
       ],
 
 488초
+        keyworld 2.92
+        SBERT 0.754
+        USE 0.581
 ==================================================================================================
 output_영어로질문.csv
 
@@ -101,3 +107,40 @@ messages=[
       ],
 
 432초
+
+==================================================================================================
+output_한글기사_영어로질문.csv
+
+model = "gpt-3.5-turbo"
+# default = 1
+temperature = 0.5
+# default = 256
+max_tokens = 256
+# default = 1
+top_p = 0.7
+# default = 0
+frequency_penalty = 0
+# default = 0
+presence_penalty = 0
+
+      messages=[
+        {
+          "role": "system", "content": "assistant는 영어권 뉴스 기자이다."
+        },
+        {
+          "role": "user", "content": """사람이 신문 기사를 요약하는 일반적인 방법:
+                                      1. 흐름과 연관관계 및 단락별 주제를 파악하며 읽기
+                                      2. 새로운 용어 정리하기
+                                      3. 육하원칙에 의해 정리하기"""
+        },        
+        {
+          "role": "user",
+          "content": """Summarize the following news article in 3 sentences in Korean, and limit the length of the entire answer to 300 characters."""
+        },
+        {
+          "role": "user",
+          "content": content
+        },
+      ],
+
+475초
