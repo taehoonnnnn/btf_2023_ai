@@ -10,8 +10,8 @@ def main():
 
     # Apply the function to each row of the DataFrame
     score_keyword = data.apply(lambda row: compute_score(row['response'], 
-                                [row['keyword1'], row['keyword2'], row['keyword3'], 
-                                 row['keyword4'], row['keyword5']]), axis=1)
+                                [row['keyword1_trans'], row['keyword2_trans'], row['keyword3_trans'], 
+                                 row['keyword4_trans'], row['keyword5_trans']]), axis=1)
 
     data.insert(1, 'score_keyword', score_keyword)
 
