@@ -367,8 +367,7 @@
 3. 평가방법
     - 단어 임베딩 방법 중 하나인 Sentence-BERT(SBERT)를 사용하여 문장과 키워드 간의 유사도를 계산하는 방법
     -  SBERT는 BERT를 기반으로 문장 임베딩을 생성하며, 이를 통해 문장 간의 유사도를 계산할 수 있다.
-    - pip install sentence_transformers를 통해 sentence_transformers-2.2.2 torch-2.0.1 torchvision-0.15.2 transformers-4.31.0를 설치했다.
-    
+
     - sentence-BERT는 문장 간의 유사성을 계산하는 데 특화되어 있다. BERT 모델은 개별 토큰에 대한 벡터를 생성하지만, Sentence-BERT는 전체 문장에 대한 벡터를 생성한다.
     - GloVe는 Co-occurrence 통계에 기반한 단어 임베딩 기법으로, 문맥을 고려하여 단어의 의미를 임베딩하지만, GloVe는 문장 전체의 의미를 포착하는 데는 제한적이다.
     - FastText는 각 단어를 n-gram의 집합으로 취급하여 임베딩을 생성한다. 오탈자나 다른 형태의 단어도 적절하게 처리할 수 있다. 문장 전체의 의미를 포착하는 데는 제한적이다.
@@ -376,6 +375,21 @@
     - USE는 문장 전체를 고려하여 임베딩을 생성합니다. 이 모델은 여러 언어를 지원하며, 크기가 작은 두 가지 버전 (DAN과 Transformer)이 있다.
     - Word2Vec을 기반으로 하는 Doc2Vec은 문장이나 문서 전체의 임베딩을 생성한다.
     - InferSent는 문장의 임베딩을 생성한다. 이 모델은 Supervised Learning 방식으로 학습되며, 특히 감정 분석 등의 작업에서 좋은 성능을 보인다.
+
+    - 다음은 USE, InferSent, Doc2Vec을 시도해보도록 하자.
+
+    - SBERT
+        - pip install sentence_transformers를 통해 sentence_transformers-2.2.2 torch-2.0.1 torchvision-0.15.2 transformers-4.31.0를 설치했다.
+        - setence BERT를 이용한 평가는 sentenceBERT.py를 통해 구현했다.
+
+    - USE
+        -pip install absl-py를 통해 absl-py-1.4.0를 설치했다.
+        -pip install tensorflow를 통해 astunparse-1.6.3 cachetools-5.3.1 flatbuffers-23.5.26 gast-0.4.0 google-auth-2.22.0 google-auth-oauthlib-1.0.0 google-pasta-0.2.0 grpcio-1.56.2 h5py-3.9.0 keras-2.13.1 libclang-16.0.6 markdown-3.4.3 numpy-1.24.3 oauthlib-3.2.2 opt-einsum-3.3.0 protobuf-4.23.4 requests-oauthlib-1.3.1 rsa-4.9 tensorboard-2.13.0 tensorboard-data-server-0.7.1 tensorflow-2.13.0 tensorflow-estimator-2.13.0 tensorflow-intel-2.13.0 tensorflow-io-gcs-filesystem-0.31.0 termcolor-2.3.0 typing-extensions-4.5.0 urllib3-1.26.16 werkzeug-2.3.6 wheel-0.40.0 wrapt-1.15.0를 설치했다.
+        -pip install tensolflow-hub를 통해  tensorflow_hub-0.14.0를 설치했다.
+
+
+
+
 
 
 
