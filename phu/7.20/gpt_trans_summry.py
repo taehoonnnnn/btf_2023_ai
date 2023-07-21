@@ -10,7 +10,7 @@ load_dotenv()
 api_key = os.getenv("api_key") 
 openai.api_key = api_key
 
-df = pd.read_csv('작업용\자본시장_금융_키워드100_번역_0720.csv')
+df = pd.read_csv('자본시장_금융_키워드100_번역_0720 copy.csv')
 
 # 모델 및 매개변수 정의
 model = "gpt-3.5-turbo"
