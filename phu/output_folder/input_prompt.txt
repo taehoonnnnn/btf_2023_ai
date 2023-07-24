@@ -12,11 +12,21 @@ output.csv (7.21)
       ],
 
 489초
-        eng default
-        keyword_eng 1.72
-        SBERT 0.83
-        USE 0.746
-        fasttext 0.97
+
+output.csv (7.24 수정)
+
+      messages=[
+        {
+          "role": "user",
+          "content": "Summarize the following news article in 3 sentences, and limit the length of the entire answer to 300 characters."
+        },
+        {
+          "role": "user",
+          "content": content_trans
+        },
+419초
+
+
 ===================================================================================================
 output_kor.csv 
 
@@ -150,10 +160,11 @@ presence_penalty = 0
       ],
 
 475초
-===================================================================================================
-output_영어번역제목내용.csv
 
-model = "gpt-3.5-turbo"
+=======================================================================================================
+output_eng_frequency.csv (7.24)
+
+model = "gpt-3.5-turbo-16k"
 # default = 1
 temperature = 0.3
 # default = 256
@@ -167,13 +178,45 @@ presence_penalty = 0
 
       messages=[
         {
-          "role": "system", "content": "assistant는 영어권 뉴스 기자이다."
+          "role": "system", "content": "The assistant is an English-speaking news reporter."
         },
         {
           "role": "user",
-          "content": """Summarize the following news article in 3 sentences in Korean, and limit the length of the entire answer to 300 characters."""
+          "content": """Summarize the following news article in 3 sentences, and limit the length of the entire answer to 300 characters."""
         },
         {
           "role": "user",
           "content": title_trans +"  " + content_trans
         },
+
+262초
+
+===========================================================================================================
+output_kor_frequency.csv
+
+model = "gpt-3.5-turbo-16k"
+# default = 1
+temperature = 0.3
+# default = 256
+max_tokens = 512
+# default = 1
+top_p = 1
+# default = 0
+frequency_penalty = -0.5
+# default = 0
+presence_penalty = 0
+
+      messages=[
+        {
+          "role": "system", "content": "어시스턴트는 기자이다."
+        },
+        {
+          "role": "user",
+          "content": """다음 뉴스 기사를  3문장으로 요약해, 총 답변의 길이는 150자 이내로 제한한다."""
+        },
+        {
+          "role": "user",
+          "content": title +"  " + content
+        },
+
+512초
