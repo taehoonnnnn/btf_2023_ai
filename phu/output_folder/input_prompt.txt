@@ -1,0 +1,179 @@
+output.csv (7.21)
+
+      messages=[
+        {
+          "role": "user",
+          "content": "다음 뉴스 기사를 3문장으로 요약해, 총 답변의 길이는 150자 이내로 제한한다."
+        },
+        {
+          "role": "user",
+          "content": content_trans 
+        },
+      ],
+
+489초
+        eng default
+        keyword_eng 1.72
+        SBERT 0.83
+        USE 0.746
+        fasttext 0.97
+===================================================================================================
+output_kor.csv 
+
+      messages=[
+        {
+          "role": "user",
+          "content": "다음 뉴스 기사를 3문장으로 요약해, 총 답변의 길이는 150자 이내로 제한한다."
+        },
+        {
+          "role": "user",
+          "content": content
+        },
+      ],
+
+488초
+        kor default
+        keyword 2.92
+        SBERT 0.754
+        USE 0.581
+        fasttext 0.889
+        kobert 0.868
+        koelectra 0.891
+==================================================================================================
+output_영어로질문.csv
+
+model = "gpt-3.5-turbo"
+# default = 1
+temperature = 0.5
+# default = 256
+max_tokens = 256
+# default = 1
+top_p = 0.7
+# default = 0
+frequency_penalty = 0
+# default = 0
+presence_penalty = 0
+
+messages=[
+        {
+          "role": "system", "content": "assistant는 영어권 뉴스 기자이다."
+        },
+        {
+          "role": "user", "content": """사람이 신문 기사를 요약하는 일반적인 방법:
+                                      1. 흐름과 연관관계 및 단락별 주제를 파악하며 읽기
+                                      2. 새로운 용어 정리하기
+                                      3. 육하원칙에 의해 정리하기"""
+        },        
+        {
+          "role": "user",
+          "content": """Summarize the following news article into 3 sentences, 
+          focusing on important keywords, and limit the length of the total answer to 150 characters or less."""
+        },
+        {
+          "role": "user",
+          "content": content_trans 
+        },
+      ],
+
+389초
+==================================================================================================
+output_영어로질문2.csv
+
+model = "gpt-3.5-turbo"
+# default = 1
+temperature = 0.5
+# default = 256
+max_tokens = 256
+# default = 1
+top_p = 0.7
+# default = 0
+frequency_penalty = 0
+# default = 0
+presence_penalty = 0
+
+messages=[
+        {
+          "role": "system", "content": "assistant는 영어권 뉴스 기자이다."
+        },
+        {
+          "role": "user", "content": """사람이 신문 기사를 요약하는 일반적인 방법:
+                                      1. 흐름과 연관관계 및 단락별 주제를 파악하며 읽기
+                                      2. 새로운 용어 정리하기
+                                      3. 육하원칙에 의해 정리하기"""
+        },        
+        {
+          "role": "user",
+          "content": """Summarize the following news article into 3 sentences, 
+          focusing on important keywords, and limit the length of the total answer to 300 characters or less."""
+        },
+        {
+          "role": "user",
+          "content": content_trans 
+        },
+      ],
+
+432초
+
+==================================================================================================
+output_한글기사_영어로질문.csv
+
+model = "gpt-3.5-turbo-16k"
+# default = 1
+temperature = 0.5
+# default = 256
+max_tokens = 256
+# default = 1
+top_p = 0.7
+# default = 0
+frequency_penalty = 0
+# default = 0
+presence_penalty = 0
+
+      messages=[
+        {
+          "role": "system", "content": "assistant는 영어권 뉴스 기자이다."
+        },
+        {
+          "role": "user", "content": """사람이 신문 기사를 요약하는 일반적인 방법:
+                                      1. 흐름과 연관관계 및 단락별 주제를 파악하며 읽기
+                                      2. 새로운 용어 정리하기
+                                      3. 육하원칙에 의해 정리하기"""
+        },        
+        {
+          "role": "user",
+          "content": """Summarize the following news article in 3 sentences in Korean, and limit the length of the entire answer to 300 characters."""
+        },
+        {
+          "role": "user",
+          "content": content
+        },
+      ],
+
+475초
+===================================================================================================
+output_영어번역제목내용.csv
+
+model = "gpt-3.5-turbo"
+# default = 1
+temperature = 0.3
+# default = 256
+max_tokens = 256
+# default = 1
+top_p = 1
+# default = 0
+frequency_penalty = -0.5
+# default = 0
+presence_penalty = 0
+
+      messages=[
+        {
+          "role": "system", "content": "assistant는 영어권 뉴스 기자이다."
+        },
+        {
+          "role": "user",
+          "content": """Summarize the following news article in 3 sentences in Korean, and limit the length of the entire answer to 300 characters."""
+        },
+        {
+          "role": "user",
+          "content": title_trans +"  " + content_trans
+        },
