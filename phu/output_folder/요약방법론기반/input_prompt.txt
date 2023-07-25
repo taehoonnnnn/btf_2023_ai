@@ -1,0 +1,78 @@
+output_cosine.csv
+
+      messages=[
+        {
+          role user,
+          content The following news article is summarized in 3 sentences as a cosine similarity-based summary, limiting the length of the total answer to 300 characters.
+        },
+        {
+          role user,
+          content content_trans
+        },
+396초
+
+output_TF-IDF.csv
+
+      messages=[
+        {
+          role user,
+          content The following news article is summarized in 3 sentences with a TF-IDF-based summary, and the length of the total answer is limited to 300 characters.
+        },
+        {
+          role user,
+          content content_trans
+        },
+403초
+
+output_TextRank.csv
+
+      messages=[
+        {
+          role user,
+          content The following news article is summarized in 3 sentences with a TextRank-based summary, and the length of the total answer is limited to 300 characters.
+        },
+        {
+          role user,
+          content content_trans
+        },
+410초
+
+output_Abstractive.csv
+
+      messages=[
+        {
+          role user,
+          content The following news article is summarized in three sentences with an Abstract-based summary, limiting the length of the total answer to 300 characters.
+        },
+        {
+          role user,
+          content content_trans
+        },
+410초
+
+output_Pointer-Generator_Networks.csv
+
+      messages=[
+        {
+          role user,
+          content The following news article is summarized in three sentences with an Pointer-Generator Networks-based summary, limiting the length of the total answer to 300 characters.
+        },
+        {
+          role user,
+          content content_trans
+        },
+403초
+
+output_TSRL.csv
+
+      messages=[
+        {
+          role user,
+          content The following news article is summarized in three sentences with an Text Summarization using Reinforcement Learning-based summary, limiting the length of the total answer to 300 characters.
+        },
+        {
+          role user,
+          content content_trans
+        },
+
+374초
