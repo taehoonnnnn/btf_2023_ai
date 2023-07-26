@@ -9,7 +9,7 @@ output_cosine.csv
           role user,
           content content_trans
         },
-396초
+407초
 
 output_TF-IDF.csv
 
@@ -22,7 +22,7 @@ output_TF-IDF.csv
           role user,
           content content_trans
         },
-403초
+407초
 
 output_TextRank.csv
 
@@ -35,7 +35,7 @@ output_TextRank.csv
           role user,
           content content_trans
         },
-410초
+413초
 
 output_Abstractive.csv
 
@@ -48,7 +48,7 @@ output_Abstractive.csv
           role user,
           content content_trans
         },
-410초
+515초
 
 output_Pointer-Generator_Networks.csv
 
