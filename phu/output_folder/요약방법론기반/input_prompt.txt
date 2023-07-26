@@ -76,3 +76,17 @@ output_TSRL.csv
         },
 
 374초
+
+output_Topic-based.csv
+
+      messages=[
+        {
+          "role": "user",
+          "content": "The following news article is summarized in three sentences with an Text Summarization using Topic-based Summarization, limiting the length of the total answer to 300 characters."
+        },
+        {
+          "role": "user",
+          "content": content_trans
+        },
+
+397초
