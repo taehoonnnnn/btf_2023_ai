@@ -6,7 +6,7 @@ def compute_score(response, keywords):
 
 def main():
     # Load the data
-    data = pd.read_csv('output_TSRL.csv')
+    data = pd.read_csv('output_Abstractive.csv')
 
     # Apply the function to each row of the DataFrame
     score_keyword = data.apply(lambda row: compute_score(row['response'], 
