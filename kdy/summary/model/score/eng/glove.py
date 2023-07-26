@@ -6,7 +6,7 @@ from nltk.tokenize import word_tokenize
 import nltk
 from gensim.scripts.glove2word2vec import glove2word2vec
 
-nltk.download('punkt')
+# nltk.download('punkt')
 
 # GloVe 모델을 Word2Vec 형식으로 변환합니다
 glove_input_file = 'glove.6B.300d.txt'
