@@ -4,7 +4,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 from absl import logging
 import tensorflow as tf
 import tensorflow_hub as hub
-7
+
 
 # Sentence-BERT 모델을 로드합니다
 model = hub.load("https://tfhub.dev/google/universal-sentence-encoder/4")
