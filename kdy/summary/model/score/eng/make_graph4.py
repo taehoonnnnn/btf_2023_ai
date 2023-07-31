@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 df = pd.read_csv('averages.csv')
 
 # Filter the DataFrame to only include the specified descriptions
-df_filtered = df[df['description'].isin(['default','frequency_penalty_-2','frequency_penalty_-1','frequency_penalty_1', 'frequency_penalty_2' ])]
+df_filtered = df[df['description'].isin(['default','max_token_64','max_token_128' ])]
 
 # Select the desired columns
 df_selected = df_filtered[['description', 'score_keyword_min','score_keyword_max','score_keyword_mean','score_keyword_std','score_keyword_nltk_min','score_keyword_nltk_max','score_keyword_nltk_mean','score_keyword_nltk_std']]
