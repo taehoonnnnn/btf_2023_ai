@@ -13,9 +13,9 @@ openai.api_key = api_key
 df = pd.read_csv('자본시장_금융.csv')
 
 # 모델 및 매개변수 정의
-model = "gpt-3.5-turbo-16k"
+model = "gpt-3.5-turbo"
 # default = 1
-temperature = 0
+temperature = 1
 # default = 256
 max_tokens = 256
 # default = 1
@@ -23,25 +23,35 @@ top_p = 1
 # default = 0
 frequency_penalty = 0
 # default = 0
-presence_penalty = 0
+presence_penalty = 1
 
 # Initialize new dataframe with desired column names
 df_new = pd.DataFrame(
     columns=[
-        "article_number", "score", 
-        "keyword1" ,"keyword2" ,"keyword3" ,"keyword4" ,"keyword5",  
+        "article_number", 
+        "title", "title_trans", "content","content_trans",
+        "keyword1" ,"keyword2" ,"keyword3" ,"keyword4" ,"keyword5",
+        "keyword1_trans" ,"keyword2_trans" ,"keyword3_trans" ,"keyword4_trans" ,"keyword5_trans",
         "message",  "model", "temperature", "max_tokens", "top_p", 
         "frequency_penalty", "presence_penalty", "response"])
 
 for idx, row in df.iterrows():
-    time.sleep(5)
+    time.sleep(3)
     article_number = row.iloc[0]
+    title = row.iloc[1]
+    title_trans = row.iloc[5]
     content = row.iloc[4]
-    keyword1 = row.iloc[5]
-    keyword2 = row.iloc[6]
-    keyword3 = row.iloc[7]
-    keyword4 = row.iloc[8]
-    keyword5 = row.iloc[9]
+    content_trans = row.iloc[6]
+    keyword1 = row.iloc[7]
+    keyword2 = row.iloc[8]
+    keyword3 = row.iloc[9]
+    keyword4 = row.iloc[10]
+    keyword5 = row.iloc[11]
+    keyword1_trans = row.iloc[12]
+    keyword2_trans = row.iloc[13]
+    keyword3_trans = row.iloc[14]
+    keyword4_trans = row.iloc[15]
+    keyword5_trans = row.iloc[16]
     
     response = openai.ChatCompletion.create(
       model=model,
@@ -52,7 +62,7 @@ for idx, row in df.iterrows():
         },
         {
           "role": "user",
-          "content": content
+          "content": content  
         },
       ],
       temperature=temperature,
@@ -75,7 +85,7 @@ for idx, row in df.iterrows():
       "keyword4" : keyword4,
       "keyword5" : keyword5,
       "response": result,
-      "message": "다음 뉴스 기사를  3문장으로 요약해, 총 답변의 길이는 150자 이내로 제한한다. + content",
+      "message": "The following news article is summarized in three sentences, limiting the length of the total answer to 300 characters. + content_trans",
       "model": model,
       "temperature": temperature,
       "max_tokens": max_tokens,
