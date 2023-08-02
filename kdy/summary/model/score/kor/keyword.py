@@ -6,7 +6,7 @@ def compute_score(response, keywords):
 
 def main():
     # Load the data
-    data = pd.read_csv('자본시장_금융_kor.csv')
+    data = pd.read_csv('data1_val_23cent_1.csv')
 
     # Apply the function to each row of the DataFrame
     score_keyword = data.apply(lambda row: compute_score(row['response'], 

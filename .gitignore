@@ -1,6 +1,15 @@
 # Created by https://www.toptal.com/developers/gitignore/api/python,java,venv,windows,visualstudiocode
 # Edit at https://www.toptal.com/developers/gitignore?templates=python,java,venv,windows,visualstudiocode
 
+### cc.ko.300.bin ###
+
+cc.ko.300.bin
+
+### glove ###
+
+glove.6B.300d.txt
+glove.6B.300d.word2vec.txt
+
 ### data ###
 data/
 
