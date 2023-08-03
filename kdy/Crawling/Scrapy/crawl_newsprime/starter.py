@@ -6,14 +6,14 @@ import time
 from concurrent.futures import ThreadPoolExecutor
 
 start = time.time()
-input_name = '자본시장_금융.csv'
+input_name = '자본시장_증권.csv'
 
 # article_num을 입력받아 스파이더를 실행시키는 함수
 def run_spider(article_num):
     command = f'scrapy crawl article -a article_num={article_num}'
     process = subprocess.Popen(command, shell=True)
     process.wait()
-
+ 
 # url.csv의 url을 읽는다
 with open(input_name,'r') as f:
     rdr = csv.reader(f)
