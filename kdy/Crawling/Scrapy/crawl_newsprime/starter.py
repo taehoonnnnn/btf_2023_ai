@@ -6,7 +6,7 @@ import time
 from concurrent.futures import ThreadPoolExecutor
 
 start = time.time()
-input_name = '중기벤처_중기벤처일반.csv'
+input_name = '지역_칼럼기자수첩.csv'
 
 # article_num을 입력받아 스파이더를 실행시키는 함수
 def run_spider(article_num):
